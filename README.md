@@ -1,4 +1,4 @@
-# Forward Kinematics Kaki Robot 2-DoF
+# Forward Kinematics dan Inverse Kinematics Kaki Robot 2-DoF
 
 ## Profil
 
@@ -16,10 +16,10 @@ dianggap nol.
 
 Panjang link disesuaikan dengan NIM:
 
-| Link | Penentuan | Panjang |
-|---|---|---:|
-| Femur | Dua digit terakhir NIU `583061` | 61 cm |
-| Tibia | Dua digit terakhir NIF `24470` | 70 cm |
+| Link  | Penentuan                       | Panjang |
+| ----- | ------------------------------- | ------: |
+| Femur | Dua digit terakhir NIU `583061` |   61 cm |
+| Tibia | Dua digit terakhir NIF `24470`  |   70 cm |
 
 Masukkan panjang link sesuai tabel di atas ketika program meminta panjang
 link pertama dan kedua. Servo 1 mengatur sudut Femur terhadap sumbu-X positif.
@@ -39,18 +39,18 @@ trigonometri.
 
 ## Fitur dan Status
 
-| Fitur | Status |
-|---|---|
-| Perhitungan forward kinematics 2-DoF | ✅ Diimplementasikan |
-| Input sudut Servo 1 dan Servo 2 menggunakan `input()` | ✅ Diimplementasikan |
-| Input panjang Femur dan Tibia berdasarkan NIM | ✅ Masukkan 61 cm dan 70 cm saat diminta |
-| Contoh pengujian Servo 1 = 40° dan Servo 2 = 30° | ✅ Berhasil dijalankan |
-| Mathematical proof / dokumentasi tulisan tangan | ☐ Belum tersedia |
-| Sistem dengan lebih dari 2-DoF | ☐ Belum tersedia |
-| Kinematika tiga dimensi (X, Y, Z) | ☐ Belum tersedia |
-| Homogeneous transformation dengan library matriks | ☐ Belum tersedia |
-| Visualisasi postur Femur dan Tibia menggunakan Matplotlib | ✅ Diimplementasikan |
-| Inverse kinematics (IK) interaktif dari target X, Y | ✅ Diimplementasikan |
+| Fitur                                                     | Status                                   |
+| --------------------------------------------------------- | ---------------------------------------- |
+| Perhitungan forward kinematics 2-DoF                      | ✅ Diimplementasikan                     |
+| Input sudut Servo 1 dan Servo 2 menggunakan `input()`     | ✅ Diimplementasikan                     |
+| Input panjang Femur dan Tibia berdasarkan NIM             | ✅ Masukkan 61 cm dan 70 cm saat diminta |
+| Contoh pengujian Servo 1 = 40° dan Servo 2 = 30°          | ✅ Berhasil dijalankan                   |
+| Mathematical proof / dokumentasi tulisan tangan           | ✅ Sudah tersedia                        |
+| Sistem dengan lebih dari 2-DoF                            | ☐ Belum tersedia                         |
+| Kinematika tiga dimensi (X, Y, Z)                         | ☐ Belum tersedia                         |
+| Homogeneous transformation dengan library matriks         | ☐ Belum tersedia                         |
+| Visualisasi postur Femur dan Tibia menggunakan Matplotlib | ✅ Diimplementasikan                     |
+| Inverse kinematics (IK) interaktif dari target X, Y       | ✅ Diimplementasikan                     |
 
 ## Hasil Uji Perhitungan
 
