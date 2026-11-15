@@ -48,7 +48,7 @@ trigonometri.
 | Sistem dengan lebih dari 2-DoF | ☐ Belum tersedia |
 | Kinematika tiga dimensi (X, Y, Z) | ☐ Belum tersedia |
 | Homogeneous transformation dengan library matriks | ☐ Belum tersedia |
-| Visualisasi GUI atau plot | ☐ Belum diimplementasikan |
+| Visualisasi postur Femur dan Tibia menggunakan Matplotlib | ✅ Diimplementasikan |
 | Inverse kinematics (IK) | ☐ Belum tersedia |
 
 ## Hasil Uji Perhitungan
@@ -77,8 +77,9 @@ Ikuti prompt di terminal. Masukkan sudut Servo 1, sudut Servo 2, panjang link
 pertama (Femur), lalu panjang link kedua (Tibia). Untuk nilai berdasarkan NIM
 ini, masukkan panjang `61` dan `70`.
 
-Program menggunakan NumPy untuk fungsi trigonometri. Pasang dependensinya dengan:
+Program menggunakan NumPy untuk fungsi trigonometri dan Matplotlib untuk
+menampilkan plot. Pasang dependensi dengan:
 
 ```bash
-python -m pip install numpy
+python -m pip install numpy matplotlib
 ```
