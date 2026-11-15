@@ -9,7 +9,6 @@ def forward_kinematics(theta1, theta2, l1, l2):
     return x, y
 
 print("Forward Kinematics for a 2-DoF Robotic Leg")
-print("Enter the angles (in degrees) and lengths of the links:")
 theta1_deg = float(input("Angle of the first joint (theta1) in degrees: "))
 theta2_deg = float(input("Angle of the second joint (theta2) in degrees: "))
 l1 = float(input("Length of the first link (l1): "))
