@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import matplotlib.pyplot as plt
-
 
 def forward_kinematics(
     first_joint_angle: float,
@@ -18,6 +16,34 @@ def forward_kinematics(
     y += second_link_length * np.sin(first_joint_angle + second_joint_angle)
 
     return x, y
+
+
+def inverse_kinematics(
+    x: float,
+    y: float,
+    first_link_length: float,
+    second_link_length: float,
+) -> tuple[float, float]:
+    """Return one valid joint-angle solution for a planar 2-DoF leg."""
+    if first_link_length <= 0 or second_link_length <= 0:
+        raise ValueError("Link lengths must be greater than zero.")
+
+    distance = np.sqrt(x**2 + y**2)
+    minimum_reach = abs(first_link_length - second_link_length)
+    maximum_reach = first_link_length + second_link_length
+    if not minimum_reach <= distance <= maximum_reach:
+        raise ValueError("The target position is unreachable.")
+
+    cos_angle2 = (
+        x**2 + y**2 - first_link_length**2 - second_link_length**2
+    ) / (2 * first_link_length * second_link_length)
+    angle2 = np.arccos(np.clip(cos_angle2, -1.0, 1.0))
+
+    k1 = first_link_length + second_link_length * np.cos(angle2)
+    k2 = second_link_length * np.sin(angle2)
+    angle1 = np.arctan2(y, x) - np.arctan2(k2, k1)
+
+    return angle1, angle2
 
 
 def plot_robot_leg(
