@@ -19,4 +19,4 @@ theta2 = np.radians(theta2_deg)
 
 x, y = forward_kinematics(theta1, theta2, l1, l2)
 
-print(f"The end effector is at position ({x:.2f}, {y:.2f})")
+print(f"The end effector is at position ({x:.4f}, {y:.4f})")
