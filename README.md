@@ -77,11 +77,8 @@ Ikuti prompt di terminal. Masukkan sudut Servo 1, sudut Servo 2, panjang link
 pertama (Femur), lalu panjang link kedua (Tibia). Untuk nilai berdasarkan NIM
 ini, masukkan panjang `61` dan `70`.
 
-Program menggunakan NumPy untuk fungsi trigonometri. Pasang dependensi dengan:
+Program menggunakan NumPy untuk fungsi trigonometri. Pasang dependensinya dengan:
 
 ```bash
-python -m pip install numpy matplotlib
+python -m pip install numpy
 ```
-
-`matplotlib` saat ini diimpor oleh program, tetapi belum digunakan untuk
-menampilkan visualisasi.
