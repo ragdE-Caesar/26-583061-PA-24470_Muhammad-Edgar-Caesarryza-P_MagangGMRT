@@ -7,11 +7,12 @@
 
 ## Deskripsi
 
-Proyek ini menghitung forward kinematics (FK) kaki robot planar dengan dua
-derajat kebebasan (2-DoF), yaitu sendi Femur dan Tibia. Program pada `main.py`
-meminta sudut kedua servo dan panjang kedua link melalui terminal, lalu
-menghitung koordinat ujung Tibia (end-effector) terhadap titik pangkal `(0, 0)`.
-Panjang Coxa dianggap nol.
+Proyek ini menghitung forward kinematics (FK) dan inverse kinematics (IK) kaki
+robot planar dengan dua derajat kebebasan (2-DoF), yaitu sendi Femur dan Tibia.
+Program pada `main.py` meminta pilihan mode dan panjang kedua link melalui
+terminal. Mode FK menerima sudut servo untuk menghitung koordinat end-effector;
+mode IK menerima target X, Y untuk menghitung sudut servo. Panjang Coxa
+dianggap nol.
 
 Panjang link disesuaikan dengan NIM:
 
@@ -49,7 +50,7 @@ trigonometri.
 | Kinematika tiga dimensi (X, Y, Z) | ☐ Belum tersedia |
 | Homogeneous transformation dengan library matriks | ☐ Belum tersedia |
 | Visualisasi postur Femur dan Tibia menggunakan Matplotlib | ✅ Diimplementasikan |
-| Inverse kinematics (IK) | ☐ Belum tersedia |
+| Inverse kinematics (IK) interaktif dari target X, Y | ✅ Diimplementasikan |
 
 ## Hasil Uji Perhitungan
 
@@ -65,6 +66,10 @@ Y = 104.9885 cm
 Uji dijalankan dengan input berurutan `40`, `30`, `61`, dan `70`. Hasil tersebut
 menggunakan sudut total Tibia sebesar `40° + 30° = 70°` terhadap sumbu-X positif.
 
+Untuk menguji IK, pilih mode `2`, masukkan panjang `61` dan `70`, lalu masukkan
+target `X = 70.6701` dan `Y = 104.9885`. Program akan menghitung sudut servo
+yang menghasilkan posisi target tersebut.
+
 ## Cara Menjalankan
 
 Jalankan perintah berikut dari direktori repository:
@@ -73,9 +78,12 @@ Jalankan perintah berikut dari direktori repository:
 python main.py
 ```
 
-Ikuti prompt di terminal. Masukkan sudut Servo 1, sudut Servo 2, panjang link
-pertama (Femur), lalu panjang link kedua (Tibia). Untuk nilai berdasarkan NIM
-ini, masukkan panjang `61` dan `70`.
+Pilih mode `1` untuk FK atau `2` untuk IK. Masukkan panjang link pertama
+(Femur) dan kedua (Tibia); untuk NIM ini gunakan `61` dan `70`.
+
+- **FK:** masukkan sudut Servo 1 dan Servo 2 dalam derajat.
+- **IK:** masukkan target X dan Y dalam cm. Program menampilkan satu solusi
+  sudut servo dalam derajat.
 
 Program menggunakan NumPy untuk fungsi trigonometri dan Matplotlib untuk
 menampilkan plot. Pasang dependensi dengan:

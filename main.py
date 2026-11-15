@@ -75,7 +75,7 @@ def plot_robot_leg(
         label="Tibia",
     )
     plt.scatter(end_effector_x, end_effector_y, marker="x", label="End-effector")
-    plt.title("2-DoF Robotic Leg Forward Kinematics")
+    plt.title("2-DoF Robotic Leg Configuration")
     plt.xlabel("X Position (cm)")
     plt.ylabel("Y Position (cm)")
     plt.axis("equal")
@@ -86,18 +86,46 @@ def plot_robot_leg(
 
 
 def main() -> None:
-    print("Forward Kinematics for a 2-DoF Robotic Leg")
-    first_angle_degrees = float(
-        input("Angle of the first joint (theta1) in degrees: ")
-    )
-    second_angle_degrees = float(
-        input("Angle of the second joint (theta2) in degrees: ")
-    )
+    print("2-DoF Robotic Leg Kinematics")
+    print("1. Forward kinematics (FK)")
+    print("2. Inverse kinematics (IK)")
+    mode = input("Select mode (1/2): ").strip()
+    if mode not in {"1", "2"}:
+        print("Invalid mode. Select 1 for FK or 2 for IK.")
+        return
+
     first_link_length = float(input("Length of the first link (l1): "))
     second_link_length = float(input("Length of the second link (l2): "))
+    if first_link_length <= 0 or second_link_length <= 0:
+        print("Link lengths must be greater than zero.")
+        return
 
-    first_angle = np.radians(first_angle_degrees)
-    second_angle = np.radians(second_angle_degrees)
+    if mode == "1":
+        first_angle_degrees = float(
+            input("Angle of the first joint (theta1) in degrees: ")
+        )
+        second_angle_degrees = float(
+            input("Angle of the second joint (theta2) in degrees: ")
+        )
+        first_angle = np.radians(first_angle_degrees)
+        second_angle = np.radians(second_angle_degrees)
+    else:
+        target_x = float(input("Target X position (cm): "))
+        target_y = float(input("Target Y position (cm): "))
+        try:
+            first_angle, second_angle = inverse_kinematics(
+                target_x,
+                target_y,
+                first_link_length,
+                second_link_length,
+            )
+        except ValueError as error:
+            print(f"IK error: {error}")
+            return
+
+        print(f"Servo 1 angle: {np.degrees(first_angle):.4f} degrees")
+        print(f"Servo 2 angle: {np.degrees(second_angle):.4f} degrees")
+
     x, y = forward_kinematics(
         first_angle,
         second_angle,
